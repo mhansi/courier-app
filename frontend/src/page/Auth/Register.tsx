@@ -10,6 +10,7 @@ import logo from '../../assets/react.svg';
 
 interface RegisterData extends Omit<User, 'id'> {
   password: string;
+  confirmPassword: string;
 }
 
 export default function Register() {
@@ -22,6 +23,7 @@ export default function Register() {
     if (!values.email) errors.email = 'Email is required';
     if (!values.password) errors.password = 'Password is required';
     if (values.password.length < 6) errors.password = 'Password must be at least 6 characters';
+    if (values.password !== values.confirmPassword) errors.confirmPassword = 'Password confirmation failed';
     if (!values.address) errors.address = 'Address is required';
     if (!values.phone) errors.phone = 'Phone is required';
     if (!values.role) errors.role = 'Role is required';
@@ -57,6 +59,7 @@ export default function Register() {
               name: '',
               email: '',
               password: '',
+              confirmPassword: '',
               address: '',
               phone: '',
               role: Role.CLIENT,
@@ -64,7 +67,15 @@ export default function Register() {
             validate={validate}
             onSubmit={async (values, { setSubmitting }) => {
               try {
-                await register(values);
+                await register({
+                  name: values.name,
+                  email: values.email,
+                  phone: values.phone,
+                  address: values.address,
+                  role: values.role,
+                  password: values.password
+                });
+
                 alert('Registered successfully!');
                 navigate('/login');
               } catch (err) {
@@ -78,9 +89,10 @@ export default function Register() {
               <Form className="space-y-4">
                 <InputField name="name" value={values.name} label="Full Name" placeholder="Enter your full name" />
                 <InputField name="email" value={values.email} label="Email Address" type="email" placeholder="Enter your email" />
-                <InputField name="password" value={values.password} label="Password" type="password" placeholder="Create a password" />
                 <InputField name="address" value={values.address} label="Address" placeholder="Enter your address" />
                 <InputField name="phone" value={values.phone} label="Phone Number" placeholder="Enter your phone number" />
+                <InputField name="password" value={values.password} label="Password" type="password" placeholder="Create a password" />
+                <InputField name="confirmPassword" value={values.confirmPassword} label="Confirm Password" type="password" placeholder="Re-enter the password" />
 
                 <div className="pt-2">
                   <Button type="submit" loading={isSubmitting} className="w-full">
