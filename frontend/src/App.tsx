@@ -1,5 +1,5 @@
 import './App.css';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 import Register from './page/Auth/Register';
 import Login from './page/Auth/Login';
 import { AuthProvider } from './context/AuthContext';
@@ -16,6 +16,7 @@ function App() {
       <AuthProvider>
         <BrowserRouter>
           <Routes>
+            <Route path="/" element={<Navigate to="/dashboard" replace />} />
             <Route path="/login" element={<Layout title="Login"><Login /></Layout>} />
             <Route path="/register" element={<Layout title="Register"><Register /></Layout>} />
             <Route path="/dashboard" element={<ProtectedRoute ><Layout title="Dashboard"><Dashboard /></Layout></ProtectedRoute>} />
