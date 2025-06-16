@@ -96,25 +96,31 @@ This guide walks you through setting up and running the **Courier App** with bot
 
 ---
 
-## 👥 About the Application
-
-The application mainly have 2 user types CLIENT and ADMIN. With the limited time, there's only CLIENT registration in the application (an ADMIN user already seeded).
+## 📋 User Stories
 
 ### 👤 Client Users
 
-After registering as a **CLIENT**, you can:
+1. As a **Client**, I want to **register an account**, so that I can start sending shipments.
 
-* Create shipments
-* View your own shipments
-* Edit shipments **only in `PENDING` status** (status field is not editable)
-* Delete shipments **only in `PENDING` status**
+2. As a **Client**, I want to **log into the system**, so I can manage my shipments.
+
+3. As a **Client**, I want to **create a new shipment**, so that I can send packages to recipients.
+
+4. As a **Client**, I want to **view a list of my own shipments**, so I can track what I’ve sent.
+
+5. As a **Client**, I want to **edit shipment details**, so I can correct or update information — but only if the shipment is in **PENDING** status.
+
+6. As a **Client**, I want to **delete a shipment**, so I can cancel a shipment request — but only if it is still in **PENDING** status.
 
 ### 🛡️ Admin Users
 
-After logging in as an **ADMIN**, you can:
+7. As an **Admin**, I want to **log into the system**, so that I can manage and monitor all shipments.
 
-* View all shipments
-* Edit the **status** of any shipment
+8. As an **Admin**, I want to **view all shipments created by any user**, so I can oversee and manage the courier operations.
+
+9. As an **Admin**, I want to **update the status of any shipment**, so I can reflect its current progress (e.g., from PENDING to INTRANSIT).
+
+---
 
 ### ⚙️ Technologies Used
 
